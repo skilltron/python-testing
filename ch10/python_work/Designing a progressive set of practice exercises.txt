@@ -1,0 +1,37 @@
+Designing a progressive set of practice exercises without answers.
+
+
+
+
+Here’s a ladder. Each one adds exactly one new piece on top of the last, and each uses the previous exercise’s code as its starting point. Use small files you make yourself (a few lines each) so you can predict the output before you run it.
+
+
+
+
+Setup: in python_work, create pets.txt with three or four pet names, one per line, and colors.txt with a few colors. Do not create cars.txt; that’s your missing file.
+
+1. Path and read, nothing else
+Make a Path for pets.txt, read it into contents, and print it. Then print len(contents).
+Done when: you can explain why the length is bigger than the number of letters you typed. (Hint: newlines are characters.)
+
+2. Add a loop
+Same file. Split contents into lines and loop over them, printing each name with a number in front: 1. Whiskers, 2. Rex... Use a counter variable you add 1 to each time through. After the loop, print how many lines there were.
+Done when: the numbering is right and you didn’t get one letter per line.
+
+3. Add try/except/else
+Wrap only the read in try. In except FileNotFoundError, print a friendly message naming the path. Put the loop from #2 in else. Run it on pets.txt, then change the filename to cars.txt and run again.
+Done when: both runs work without a traceback, and you can say why the loop belongs in else and not in try.
+
+4. Wrap it in a function
+Move everything from #3 into def show_file(path):. Outside the function, create the Path and call show_file(path) once.
+Done when: the output is identical to #3, and you can point to which line is the definition and which is the call.
+
+5. Call the function from a loop
+Make a list: ['pets.txt', 'cars.txt', 'colors.txt']. Loop over it, build a Path for each, and call show_file().
+Done when: all three are handled, the missing one gets its message, and colors.txt still prints after cars.txt fails. If it doesn’t, your try is in the wrong place.
+
+6. Return instead of print, then write a file
+Write a new function count_lines(path) that returns the number of lines, or returns 0 if the file is missing. The function itself prints nothing. In your loop, collect each result into a summary string like pets.txt: 4 lines, then after the loop write the whole summary to summary.txt with path.write_text().
+Done when: summary.txt exists with all three lines in it, and the only print calls are outside the function.
+
+Once #6 works, your 10-10 word counter is the same shape: swap “count lines” for “count a word.” Send me any of these when you finish and I’ll check them, or just tell me which one stalls you.
